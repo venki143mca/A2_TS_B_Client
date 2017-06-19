@@ -6,6 +6,8 @@ import { EmployeeComponent } from './employee.list.component';
 import { routing } from './employee.router';
 import { SharedModule } from '../shared/shared.module';
 import { EmployeeFilterPipe } from './../common/employee.filter';
+import { EmployeeService } from './employee.service';
+import { MailDetailsService } from './../mailDetails/mailDetails.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { EmployeeFilterPipe } from './../common/employee.filter';
   ],
   bootstrap: [
     EmployeeComponent
-  ]
+  ],
+  providers: [EmployeeService, MailDetailsService]
 })
 export class EmployeeModule {}
