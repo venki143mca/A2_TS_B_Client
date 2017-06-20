@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 import { EmployeeService } from './employee.service'
 import { MailDetailsService } from './../mailDetails/mailDetails.service';
@@ -32,7 +33,9 @@ export class EmployeeComponent {
   filter: Employee = new Employee();
   newEmployee: Employee = new Employee();
 
-  constructor(public employeeService: EmployeeService, public mailDetailsService: MailDetailsService) {
+  constructor(public employeeService: EmployeeService,
+    public mailDetailsService: MailDetailsService,
+    public router: Router) {
 
   }
 
@@ -92,6 +95,11 @@ export class EmployeeComponent {
     );
   }
 
+  logOut() {
+    console.log('logout');
+    this.router.navigate(['login']);
+  }
+  
   loadEmployees() {
     let that = this;
     this.employeeService.getEmployees().subscribe(

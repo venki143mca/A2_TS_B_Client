@@ -6,10 +6,6 @@ const routes: Route[] = [
    {
     path: '',
     component: EmployeeComponent
-  },
-  {
-    path: 'list',
-    component: EmployeeComponent
   }
 ];
 

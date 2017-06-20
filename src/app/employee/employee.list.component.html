@@ -3,6 +3,7 @@
     <a class="btn btn-primary" data-toggle="modal" data-target="#emailDetails"> Email Template </a>
     <a *ngIf="mailDetails.bcc != ''" href="mailto:{{to}}?cc={{mailDetails.cc}}&subject={{mailDetails.subject}}&bcc={{mailDetails.bcc}}&body={{mailDetails.mailBody}}" class="btn btn-primary"> Prepare Mail </a>
     <a *ngIf="mailDetails.bcc === ''" href="mailto:{{to}}?cc={{mailDetails.cc}}&subject={{mailDetails.subject}}&body={{mailDetails.mailBody}}" class="btn btn-primary"> Prepare Mail </a>
+    <a class="btn btn-primary" id="logout" (click)="logOut()"> Log out </a>
 </div>
 
 <table class="table">
