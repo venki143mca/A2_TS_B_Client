@@ -14,7 +14,7 @@ export class UserService {
     getUser(user: User): Observable<Response> {
         const headers: Headers = HeadersUtil.getHeaders();
         return this._http.get(`${this.url}/user?userName=${user.userName}&password=${user.password}`, {
-
+            headers: headers
         }).map((res: any) => {
                 return res.json();
             })

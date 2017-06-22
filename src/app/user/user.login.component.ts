@@ -23,20 +23,6 @@ export class UserComponent {
   ngOnInit() {
   }
 
-  // login() {
-  //   this.userService.getUser(this.user).subscribe(
-  //     (res: any) => {
-  //       const result = res.result;
-  //       if (result.length) {
-  //         console.log("login successfull");
-  //         this.router.navigate(['employee']);
-  //       } else {
-  //         console.log("login failed.")
-  //       }
-  //     }
-  //   );
-  // }
-
   login() {
     this.userService.login(this.user).subscribe(
       (res: any) => {

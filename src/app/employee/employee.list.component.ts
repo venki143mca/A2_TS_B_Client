@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-import { Moment } from 'moment';
 
 import { EmployeeService } from './employee.service'
 import { MailDetailsService } from './../mailDetails/mailDetails.service';
@@ -100,7 +99,7 @@ export class EmployeeComponent {
     this.employeeService.logout();
     this.router.navigate(['login']);
   }
-
+  
   loadEmployees() {
     let that = this;
     this.employees = [];
