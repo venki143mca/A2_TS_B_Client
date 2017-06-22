@@ -1,5 +1,5 @@
 {
-  "name": "angular2-express-starter",
+  "name": "BirthdayClient",
   "version": "1.0.0",
   "description": "Starter application of Angular2 with Express",
   "main": "server/app.js",

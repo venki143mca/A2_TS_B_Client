@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { Moment } from 'moment';
 
 import { EmployeeService } from './employee.service'
 import { MailDetailsService } from './../mailDetails/mailDetails.service';
@@ -96,12 +97,13 @@ export class EmployeeComponent {
   }
 
   logOut() {
-    console.log('logout');
+    this.employeeService.logout();
     this.router.navigate(['login']);
   }
-  
+
   loadEmployees() {
     let that = this;
+    this.employees = [];
     this.employeeService.getEmployees().subscribe(
       (res: any) => {
         // this.employees = res.result;
@@ -121,6 +123,11 @@ export class EmployeeComponent {
           //load email also
           this.addEmails(emp);
         });
+      },
+      (err: any) => {
+        if (err.status === 401) {
+          this.router.navigate(['login']);
+        }
       }
     );
   }
@@ -130,9 +137,8 @@ export class EmployeeComponent {
       (res: any) => {
         if (res.status === 201) {
           this.newEmployee.sendEmail = true;
-          this.employees.push(this.newEmployee);
+          this.loadEmployees();
         }
-        console.log('Response of adding employee from server :: ', res.status);
       }
     );
   }
@@ -166,12 +172,10 @@ export class EmployeeComponent {
   }
 
   saveEmailDetails() {
-    console.log(this.mailDetails.body);
     this.mailDetailsService.saveMailDetails(this.mailDetails).subscribe(
       (res: any) => {
         if (res.status === 201) {
           this.getEmailDetails();
-          console.log('Email Details Saved.');
         }
       }
     );
